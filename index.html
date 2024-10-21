@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPACE LAUNCHER</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap'); /* Space-themed font */
-        
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+        /* Space-themed font */
         body {
             margin: 0;
             padding: 0;
@@ -16,51 +18,75 @@
             align-items: center;
             min-height: 100vh;
             background-color: #000;
-            background-image: url('https://imgur.com/a/fj6JJW5'); /* Updated background image URL */
+            background-image: url('https://imgur.com/a/fj6JJW5');
+            /* Updated background image URL */
             background-size: cover;
             background-position: center;
             color: #FFFFFF;
             font-family: Arial, sans-serif;
         }
+
         h1 {
-            margin-top: 10px; /* Reduced space */
+            margin-top: 10px;
+            /* Reduced space */
             font-size: 48px;
             text-transform: uppercase;
-            color: #00FF00; /* Green color for the title */
-            font-family: 'Orbitron', sans-serif; /* Apply space-themed font */
+            color: #00FF00;
+            /* Green color for the title */
+            font-family: 'Orbitron', sans-serif;
+            /* Apply space-themed font */
         }
+
         #trophyContainer {
-            font-size: 24px; /* Smaller size for trophies */
+            font-size: 24px;
+            /* Smaller size for trophies */
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 10px; /* Adjust space if needed */
+            margin-top: 10px;
+            /* Adjust space if needed */
         }
+
         #statusContainer {
             display: flex;
-            justify-content: space-between; /* Space out lives and points */
+            justify-content: space-between;
+            /* Space out lives and points */
             width: 100%;
             padding: 0 20px;
             box-sizing: border-box;
-            font-size: 22px; /* Reduced font size */
+            font-size: 22px;
+            /* Reduced font size */
         }
-        #lives, #alienPoints {
-            margin: 0 10px; /* Closer to each other */
-        }
-        #lives {
-            color: #FF4500; /* Orange Red color for lives */
-        }
+
+        #lives,
         #alienPoints {
-            color: #32CD32; /* Green color for alien points */
+            margin: 0 10px;
+            /* Closer to each other */
+        }
+
+        #lives {
+            color: #FF4500;
+            /* Orange Red color for lives */
+        }
+
+        #alienPoints {
+            color: #32CD32;
+            /* Green color for alien points */
             position: relative;
         }
+
         #alienPoints a {
-            color: #32CD32; /* Maintain color for the link */
-            text-decoration: none; /* Remove underline */
+            color: #32CD32;
+            /* Maintain color for the link */
+            text-decoration: none;
+            /* Remove underline */
         }
+
         #alienPoints a:hover {
-            text-decoration: underline; /* Underline on hover */
+            text-decoration: underline;
+            /* Underline on hover */
         }
+
         #pointsWon {
             position: absolute;
             top: -30px;
@@ -71,16 +97,19 @@
             display: none;
             animation: flashPoints 1s forwards;
         }
+
         @keyframes flashPoints {
             0% {
                 opacity: 1;
                 transform: translate(-50%, -10px);
             }
+
             100% {
                 opacity: 0;
                 transform: translate(-50%, -50px);
             }
         }
+
         #spaceshipContainer {
             display: flex;
             justify-content: center;
@@ -89,6 +118,7 @@
             gap: 5px;
             font-size: 24px;
         }
+
         #gameContainer {
             position: relative;
             width: 90vw;
@@ -97,17 +127,21 @@
             max-height: 870px;
             overflow: hidden;
             border: 5px solid;
-            border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1; /* Rainbow border */
+            border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1;
+            /* Rainbow border */
             background-color: rgba(0, 0, 0, 0.8);
         }
+
         #bar {
             position: absolute;
             width: 100%;
-            height: 8px; /* Changed height to 8 pixels */
+            height: 8px;
+            /* Changed height to 8 pixels */
             background: linear-gradient(to right, #ff0, #f0f, #0ff);
             box-shadow: 0 0 5px 2px rgba(0, 0, 255, 0.5);
             z-index: 2;
         }
+
         #bar::before {
             content: '';
             position: absolute;
@@ -119,6 +153,7 @@
             background-size: contain;
             transform: translateX(-50%);
         }
+
         #bar::after {
             content: '';
             position: absolute;
@@ -126,9 +161,11 @@
             left: 50%;
             width: 10px;
             height: 10px;
-            background-color: #ADD8E6; /* Light blue color */
+            background-color: #ADD8E6;
+            /* Light blue color */
             transform: translate(-50%, -50%) rotate(45deg);
         }
+
         .targetArea {
             position: absolute;
             width: 100%;
@@ -138,40 +175,60 @@
             font-size: 24px;
             color: #FFFFFF;
             z-index: 1;
-            display: none; /* Hide all levels initially */
+            display: none;
+            /* Hide all levels initially */
             background-size: cover;
             background-position: center;
-            border: 2px solid #FFF; /* Adding border */
-            border-radius: 10px; /* Adding border radius */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.19); /* 3D effect */
+            border: 2px solid #FFF;
+            /* Adding border */
+            border-radius: 10px;
+            /* Adding border radius */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.19);
+            /* 3D effect */
         }
+
         .targetArea#level1 {
-            background: linear-gradient(45deg, #ff0000, #ff8c00); /* Red to Dark Orange */
+            background: linear-gradient(45deg, #ff0000, #ff8c00);
+            /* Red to Dark Orange */
             top: calc(0.725 * 100% - 1px);
         }
+
         .targetArea#level2 {
-            background: linear-gradient(45deg, #ff8c00, #ffd700); /* Dark Orange to Gold */
+            background: linear-gradient(45deg, #ff8c00, #ffd700);
+            /* Dark Orange to Gold */
             top: calc(0.565 * 100% - 1px);
         }
+
         .targetArea#level3 {
-            background: linear-gradient(45deg, #ffd700, #32cd32); /* Gold to Lime Green */
+            background: linear-gradient(45deg, #ffd700, #32cd32);
+            /* Gold to Lime Green */
             top: calc(0.455 * 100% - 1px);
-            height: calc(0.1 * 100%); /* 10% smaller */
+            height: calc(0.1 * 100%);
+            /* 10% smaller */
         }
+
         .targetArea#level4 {
-            background: linear-gradient(45deg, #32cd32, #1e90ff); /* Lime Green to Dodger Blue */
+            background: linear-gradient(45deg, #32cd32, #1e90ff);
+            /* Lime Green to Dodger Blue */
             top: calc(0.355 * 100% - 1px);
-            height: calc(0.063 * 100%); /* 10% smaller */
+            height: calc(0.063 * 100%);
+            /* 10% smaller */
         }
+
         .targetArea#level5 {
-            background: linear-gradient(45deg, #1e90ff, #4b0082); /* Dodger Blue to Indigo */
+            background: linear-gradient(45deg, #1e90ff, #4b0082);
+            /* Dodger Blue to Indigo */
             top: calc(0.285 * 100% - 1px);
         }
+
         .targetArea#level6 {
-            background: linear-gradient(45deg, #4b0082, #8a2be2); /* Indigo to Blue Violet */
-            transform: scale(1.05); /* 5% smaller */
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            /* Yellow to Orange */
+            transform: scale(0.95);
+            /* 5% smaller */
             top: calc(0.2256 * 100% - 1px);
         }
+
         .message {
             position: absolute;
             width: 100%;
@@ -180,15 +237,18 @@
             font-size: 48px;
             display: none;
         }
+
         .flashMessage {
             position: absolute;
             width: 100%;
             text-align: center;
-            top: 70%; /* Lower position for the message */
+            top: 70%;
+            /* Lower position for the message */
             font-size: 36px;
             display: none;
             color: #FFD700;
         }
+
         .spaceship {
             position: absolute;
             left: 50%;
@@ -196,7 +256,10 @@
             transform: translateX(-50%);
             display: none;
         }
-        #popup, #losePopup, #noLivesPopup {
+
+        #popup,
+        #losePopup,
+        #noLivesPopup {
             position: fixed;
             top: 0;
             left: 0;
@@ -209,22 +272,34 @@
             flex-direction: column;
             color: #FFFFFF;
             font-size: 24px;
-            display: none; /* Initially hidden */
-            z-index: 3; /* Ensure popups are on top */
+            display: none;
+            /* Initially hidden */
+            z-index: 3;
+            /* Ensure popups are on top */
         }
-        #popupContent, #losePopupContent, #noLivesPopupContent {
+
+        #popupContent,
+        #losePopupContent,
+        #noLivesPopupContent {
             text-align: center;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7); /* See-through dark background */
+            background: rgba(0, 0, 0, 0.7);
+            /* See-through dark background */
             border-radius: 10px;
         }
-        #popupContent, #noLivesPopupContent {
+
+        #popupContent,
+        #noLivesPopupContent {
             max-width: 80%;
         }
+
         #losePopupContent {
-            background: none; /* Remove background for losePopup */
-            border: 2px solid #32CD32; /* Green border */
+            background: none;
+            /* Remove background for losePopup */
+            border: 2px solid #32CD32;
+            /* Green border */
         }
+
         #popup input[type="email"] {
             padding: 10px;
             font-size: 18px;
@@ -232,22 +307,32 @@
             border-radius: 5px;
             margin-top: 10px;
         }
-        #popup button, #losePopup button, #noLivesPopup button {
+
+        #popup button,
+        #losePopup button,
+        #noLivesPopup button {
             margin-top: 20px;
             padding: 20px 40px;
             font-size: 36px;
-            background: linear-gradient(45deg, #00FF00, #32CD32); /* Bright green gradient */
+            background: linear-gradient(45deg, #00FF00, #32CD32);
+            /* Bright green gradient */
             border: none;
             border-radius: 10px;
             cursor: pointer;
             opacity: 1;
         }
+
         #popup button.active {
             cursor: pointer;
         }
-        #popup button:hover, #losePopup button:hover, #noLivesPopup button:hover {
-            background: linear-gradient(45deg, #32CD32, #00FF00); /* Inverse bright green gradient on hover */
+
+        #popup button:hover,
+        #losePopup button:hover,
+        #noLivesPopup button:hover {
+            background: linear-gradient(45deg, #32CD32, #00FF00);
+            /* Inverse bright green gradient on hover */
         }
+
         .celebration {
             position: fixed;
             top: 0;
@@ -261,33 +346,47 @@
             transition: opacity 1s;
             z-index: 2;
         }
+
         @keyframes flashLevel {
-            0%, 100% {
+            0%,
+            100% {
                 border-color: #FFF;
                 background-color: transparent;
             }
+
             50% {
                 border-color: #FFD700;
-                background-color: rgba(255, 215, 0, 0.5); /* Gold color with transparency */
+                background-color: rgba(255, 215, 0, 0.5);
+                /* Gold color with transparency */
             }
         }
+
         @keyframes flashGlow {
-            0%, 100% {
+            0%,
+            100% {
                 box-shadow: 0 0 20px #FFD700, 0 0 40px #FFD700, 0 0 60px #FFD700, 0 0 80px #FFD700;
             }
+
             50% {
                 box-shadow: 0 0 40px #FFD700, 0 0 60px #FFD700, 0 0 80px #FFD700, 0 0 100px #FFD700;
             }
         }
+
         @media (max-width: 768px) {
-            #lives, #alienPoints {
-                font-size: 18px; /* Smaller text for mobile browsers */
+            #lives,
+            #alienPoints {
+                font-size: 18px;
+                /* Smaller text for mobile browsers */
             }
         }
+
         .greenTitle {
-            color: #32CD32; /* Green color for the title */
-            font-size: 36px; /* Larger font size for the title */
+            color: #32CD32;
+            /* Green color for the title */
+            font-size: 36px;
+            /* Larger font size for the title */
         }
+
         #socialLinks {
             display: flex;
             justify-content: center;
@@ -296,15 +395,67 @@
             margin-top: 20px;
             font-size: 18px;
         }
+
         #socialLinks a {
             color: #FFFFFF;
             text-decoration: none;
         }
+
         #socialLinks a:hover {
             text-decoration: underline;
         }
+
+        /* Settings modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 4;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #333;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
     </style>
 </head>
+
 <body>
     <h1>🚀 SPACE LAUNCHER</h1>
     <div id="trophyContainer"></div>
@@ -314,7 +465,8 @@
             <div id="alienPoints">
                 <a href="https://alien.aircoins.io/">👽 $Alien Points: 0</a>
                 <div id="pointsWon"></div>
-                <div id="spaceshipContainer"></div> <!-- Spaceship display below $Alien points -->
+                <div id="spaceshipContainer"></div>
+                <!-- Spaceship display below $Alien points -->
             </div>
         </div>
         <div id="bar"></div>
@@ -326,7 +478,8 @@
         <div class="targetArea" id="level6">Booster Launch</div>
         <div class="message" id="message">Congrats on the Space Launch!</div>
         <div class="flashMessage" id="flashMessage">SUPER!</div>
-        <img src="https://media.giphy.com/media/Tc6duxoxb82kJ5r1l7/giphy.gif" alt="Spaceship" class="spaceship" id="spaceship">
+        <img src="https://media.giphy.com/media/Tc6duxoxb82kJ5r1l7/giphy.gif" alt="Spaceship" class="spaceship"
+            id="spaceship">
         <div class="celebration" id="celebration"></div>
     </div>
     <div id="socialLinks">
@@ -339,13 +492,39 @@
         <a href="https://alien.aircoins.io" target="_blank">
             <img src="https://img.icons8.com/color/48/000000/internet.png" alt="Website">
         </a>
+        <a href="#" id="settingsButton" onclick="showSettings()">
+            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/settings.png" alt="Settings">
+        </a>
     </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSettings()">&times;</span>
+            <h2>Settings</h2>
+            <form id="settingsForm">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+                <label for="solanaWallet">Solana Wallet Address:</label>
+                <input type="text" id="solanaWallet" name="solanaWallet" placeholder="Enter your Solana wallet address" required>
+
+                <label for="ethereumWallet">Ethereum Wallet Address:</label>
+                <input type="text" id="ethereumWallet" name="ethereumWallet" placeholder="Enter your Ethereum wallet address" required>
+
+                <label for="tonWallet">Ton Wallet Address:</label>
+                <input type="text" id="tonWallet" name="tonWallet" placeholder="Enter your Ton wallet address" required>
+
+                <button type="button" onclick="saveSettings()">Save Settings</button>
+            </form>
+        </div>
+    </div>
+
     <div id="popup">
         <div id="popupContent">
             <h2 id="popupTitle">SPACE LAUNCHER - HOW TO PLAY</h2>
-            <p id="popupMessage">Welcome to Space Launcher! Your mission is to click at the right time to boost your spaceship to the next level. Each level has a different target area. If you miss, you lose a life. You have 25 lives to start with.</p>
-            <input type="email" id="emailInput" placeholder="Enter your email address" oninput="validateEmail()">
-            <button id="popupButton" disabled>Play</button>
+            <p id="popupMessage">Welcome to Space Launcher🚀 Your mission is to tap the screen to stop the Bar in the Boost Area. The Boost Areas get smaller and smaller. If you miss, you lose a life❤️. Hit the last level 6 to win top prize and win $Alien tokens👽. You have 25 lives to start with.</p>
+            <button id="popupButton" onclick="startGame()">Play</button>
         </div>
     </div>
     <div id="losePopup">
@@ -357,8 +536,8 @@
     <div id="noLivesPopup">
         <div id="losePopupContent">
             <h2 class="greenTitle">Out of Lives</h2>
-            <p>Please come back after 24hrs to get your Space Launcher Lives refreshed.</p>
-            <button onclick="window.location.href='https://alien.aircoins.io'">Visit $Alien Site</button>
+            <p>Refresh your browser to get more lives. You must win at least 500K $Alien to withdraw</p>
+            <button onclick="window.location.href='https://alien.aircoins.io'">Visit $Alien Site for token details</button>
         </div>
     </div>
     <audio id="laserSound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
@@ -368,12 +547,15 @@
         let level = parseInt(localStorage.getItem('level')) || 1;
 
         const levels = [
-            {id: 'level1', height: 0.21, top: 0.725, points: 10},
-            {id: 'level2', height: 0.16, top: 0.565, points: 20},
-            {id: 'level3', height: 0.1, top: 0.455, points: 30}, // 10% smaller height
-            {id: 'level4', height: 0.063, top: 0.355, points: 40}, // 10% smaller height
-            {id: 'level5', height: 0.03, top: 0.285, points: 50},
-            {id: 'level6', height: 0.012, top: 0.2256, points: 100000} // 5% smaller height
+            { id: 'level1', height: 0.21, top: 0.725, points: 10 },
+            { id: 'level2', height: 0.16, top: 0.565, points: 20 },
+            { id: 'level3', height: 0.1, top: 0.455, points: 30 },
+            // 10% smaller height
+            { id: 'level4', height: 0.063, top: 0.355, points: 40 },
+            // 10% smaller height
+            { id: 'level5', height: 0.03, top: 0.285, points: 5000 },
+            { id: 'level6', height: 0.0285, top: 0.2256, points: 200000 }
+            // 5% smaller height
         ];
 
         const livesDisplay = document.getElementById('lives');
@@ -387,13 +569,13 @@
         const popupTitle = document.getElementById('popupTitle');
         const popupMessage = document.getElementById('popupMessage');
         const popupButton = document.getElementById('popupButton');
-        const emailInput = document.getElementById('emailInput');
         const losePopup = document.getElementById('losePopup');
         const noLivesPopup = document.getElementById('noLivesPopup');
         const bar = document.getElementById('bar');
         const gameContainer = document.getElementById('gameContainer');
         const trophyContainer = document.getElementById('trophyContainer');
         const celebration = document.getElementById('celebration');
+        const settingsModal = document.getElementById('settingsModal');
         let gameInterval;
         let movingDown = true;
         let flashingLevelsInterval;
@@ -453,7 +635,8 @@
             clearInterval(flashingLevelsInterval);
             bar.style.top = '0px';
             movingDown = true;
-            gameInterval = setInterval(updateGameArea, 1.5); // Reduced interval for even faster movement
+            gameInterval = setInterval(updateGameArea, 1.5);
+            // Reduced interval for even faster movement
             message.style.display = 'none';
             spaceship.style.display = 'none';
             showLevel(level - 1);
@@ -481,26 +664,16 @@
             popup.style.display = 'flex';
             if (messageType === 'rules') {
                 popupTitle.innerText = 'SPACE LAUNCHER - HOW TO PLAY';
-                popupMessage.innerHTML = `Welcome to Space Launcher! Your mission is to click at the right time to boost your spaceship to the next level. Each level has a different target area. If you miss, you lose a life. You have 25 lives to start with.`;
+                popupMessage.innerHTML =
+                    `Welcome to Space Launcher🚀 Your mission is to tap the screen to stop the Bar in the Boost Area. The levels get smaller and smaller. If you miss, you lose a life❤️. Hit Boost Launch last level to win top prize and Earn $Alien tokens 👽. You have 25 lives to start with.`;
                 popupButton.innerText = 'Play';
                 popupButton.setAttribute('onclick', 'startGame()');
-                validateEmail();
             } else if (messageType === 'congratulations') {
-                popupTitle.innerText = 'ROCKET LAUNCHED!'; /* Changed winning message */
-                popupMessage.innerText = "You've successfully launched the spaceship!";
+                popupTitle.innerText = 'ROCKET LAUNCHED!';
+                /* Changed winning message */
+                popupMessage.innerText = "You've successfully launched the Spaceship!";
                 popupButton.innerText = 'Play Again';
                 popupButton.setAttribute('onclick', 'playAgain()');
-            }
-        }
-
-        function validateEmail() {
-            const email = emailInput.value;
-            const valid = email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-            popupButton.disabled = !valid;
-            if (valid) {
-                popupButton.classList.add('active');
-            } else {
-                popupButton.classList.remove('active');
             }
         }
 
@@ -538,11 +711,14 @@
                 laserSound.play();
                 flashLevelArea(levels[level - 1].id);
                 if (level === 4) {
-                    flashMessage.style.top = '70%'; // Show 70% lower for level 4
+                    flashMessage.style.top = '70%';
+                    // Show 70% lower for level 4
                 } else if (level === 5) {
-                    flashMessage.style.top = '75%'; // Show 25 pixels lower for level 5
+                    flashMessage.style.top = '75%';
+                    // Show 25 pixels lower for level 5
                 } else {
-                    flashMessage.style.top = '30%'; // Default position for other levels
+                    flashMessage.style.top = '30%';
+                    // Default position for other levels
                 }
                 if (level === levels.length) {
                     message.style.display = 'block';
@@ -588,6 +764,31 @@
             showLevel(level - 1);
         }
 
+        // Settings modal functions
+        function showSettings() {
+            settingsModal.style.display = 'flex';
+        }
+
+        function closeSettings() {
+            settingsModal.style.display = 'none';
+        }
+
+        function saveSettings() {
+            const email = document.getElementById('email').value;
+            const solanaWallet = document.getElementById('solanaWallet').value;
+            const ethereumWallet = document.getElementById('ethereumWallet').value;
+            const tonWallet = document.getElementById('tonWallet').value;
+
+            // Save the data to localStorage or any other storage mechanism
+            localStorage.setItem('email', email);
+            localStorage.setItem('solanaWallet', solanaWallet);
+            localStorage.setItem('ethereumWallet', ethereumWallet);
+            localStorage.setItem('tonWallet', tonWallet);
+
+            alert('Settings saved successfully!');
+            closeSettings();
+        }
+
         window.addEventListener('resize', setLevelPositions);
 
         refreshLives();
@@ -596,4 +797,5 @@
         setLevelPositions();
     </script>
 </body>
+
 </html>
