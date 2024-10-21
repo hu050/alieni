@@ -523,7 +523,7 @@
     <div id="popup">
         <div id="popupContent">
             <h2 id="popupTitle">SPACE LAUNCHER - HOW TO PLAY</h2>
-            <p id="popupMessage">Welcome to Space Launcher🚀 Your mission is to tap the screen to stop the Bar in the Boost Area. The Boost Areas get smaller and smaller. If you miss, you lose a life❤️. Hit the last level 6 to win top prize and win $Alien tokens👽. You have 25 lives to start with.</p>
+            <p id="popupMessage">Welcome to Space Launcher 🚀 Your mission is to tap the screen to stop the Bar in the Boost Area. The Boost Areas get smaller and smaller. If you miss, you lose a life ❤️ Hit the last level 6 to win top prize and win $Alien tokens 👽 You have 25 lives to start with.</p>
             <button id="popupButton" onclick="startGame()">Play</button>
         </div>
     </div>
@@ -548,13 +548,13 @@
 
         const levels = [
             { id: 'level1', height: 0.21, top: 0.725, points: 10 },
-            { id: 'level2', height: 0.16, top: 0.565, points: 20 },
-            { id: 'level3', height: 0.1, top: 0.455, points: 30 },
+            { id: 'level2', height: 0.16, top: 0.565, points: 25 },
+            { id: 'level3', height: 0.1, top: 0.455, points: 50 },
             // 10% smaller height
-            { id: 'level4', height: 0.063, top: 0.355, points: 40 },
+            { id: 'level4', height: 0.063, top: 0.355, points: 500 },
             // 10% smaller height
             { id: 'level5', height: 0.03, top: 0.285, points: 5000 },
-            { id: 'level6', height: 0.0285, top: 0.2256, points: 200000 }
+            { id: 'level6', height: 0.0285, top: 0.2256, points: 500000 }
             // 5% smaller height
         ];
 
@@ -665,7 +665,7 @@
             if (messageType === 'rules') {
                 popupTitle.innerText = 'SPACE LAUNCHER - HOW TO PLAY';
                 popupMessage.innerHTML =
-                    `Welcome to Space Launcher🚀 Your mission is to tap the screen to stop the Bar in the Boost Area. The levels get smaller and smaller. If you miss, you lose a life❤️. Hit Boost Launch last level to win top prize and Earn $Alien tokens 👽. You have 25 lives to start with.`;
+                    `Welcome to Space Launcher 🚀 Your mission is to tap the screen to stop the Bar in the Boost Area. The levels get smaller and smaller. If you miss, you lose a life ❤️ Hit Boost Launch last level to win top prize and Earn $Alien tokens 👽 You have 25 lives to start with.`;
                 popupButton.innerText = 'Play';
                 popupButton.setAttribute('onclick', 'startGame()');
             } else if (messageType === 'congratulations') {
